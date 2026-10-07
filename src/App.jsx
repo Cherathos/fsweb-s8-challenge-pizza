@@ -1,27 +1,28 @@
 import { useState } from "react";
 import Home from "./pages/Home";
 import Order from "./pages/Order";
+import Success from "./pages/Success";
+import { BrowserRouter, Routes, Route } from "react-router-dom";
 
 function App() {
-  const [page, setPage] = useState("home");
-  const [selectedPizza, setSelectedPizza] = useState("");
+  const [selectedPizza, setSelectedPizza] = useState(null);
 
   return (
-    <>
-      {page === "home" && (
-        <Home
-          setPage={setPage}
-          setSelectedPizza={setSelectedPizza}
+    <BrowserRouter>
+      <Routes>
+        <Route
+          path="/"
+          element={<Home setSelectedPizza={setSelectedPizza} />}
         />
-      )}
-
-      {page === "order" && (
-        <Order
-          setPage={setPage}
-          selectedPizza={selectedPizza}
+        <Route
+          path="/order"
+          element={<Order selectedPizza={selectedPizza} />}
         />
-      )}
-    </>
+        <Route 
+        path="/success" 
+        element={<Success selectedPizza={selectedPizza} />} />
+      </Routes>
+    </BrowserRouter>
   );
 }
 

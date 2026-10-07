@@ -24,15 +24,14 @@ a:hover {
 }
 
 body {
-  display: flex;
-  flex-direction: column;
   margin: 0;
-  place-items: center;
+  padding: 0;
+
+  width: 100%;
   min-width: 320px;
   min-height: 100vh;
+
   background-color: #FAF7F2;
-  padding: 0;
-  width: 100%;
 }
 
 h1 {
@@ -45,10 +44,16 @@ ul {
   list-style-type: none;
 }
 
+#root {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
 #app {
-  max-width: 1280px;
-  margin: 0 auto;
-  padding: 2rem;
+  width: 100%;
+  margin: 0;
+  padding: 0;
   text-align: center;
 }
 
@@ -95,6 +100,7 @@ button:focus,
 button:focus-visible {
   outline: 4px auto -webkit-focus-ring-color;
 }
+
 
 @media (prefers-color-scheme: light) {
   :root {
@@ -342,6 +348,16 @@ header {
   justify-content: center;
 }
 
+.pizza img {
+  cursor: pointer;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.pizza img:hover {
+  transform: scale(1.03);
+  opacity: 0.9;
+}
+
 .food {
   display: flex;
   flex-direction: column;
@@ -505,6 +521,412 @@ footer {
   height: 20px;
 }
 
+/* Order.css */
+
+/* =========================
+   ORDER HEADER
+========================= */
+
+.order-header {
+  width: 100vw;
+  height: 100px;
+
+  background-color: #ce2829;
+
+  margin: 0;
+  padding: 0;
+
+  overflow: hidden;
+}
+
+
+.order-header-content {
+  width: 100%;
+  max-width: 1100px;
+  height: 100%;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.order-logo-img {
+  width: 250px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  display: block;
+  cursor: pointer;
+}
+
+/* BREADCRUMB */
+
+.order-breadcrumb {
+  position: absolute;
+
+  left: 30px;
+  bottom: 25px;
+
+  color: #fff;
+  font-size: 14px;
+}
+
+.order-breadcrumb span {
+  color: #fff;
+}
+
+.breadcrumb-home {
+  cursor: pointer;
+}
+
+.breadcrumb-home:hover {
+  text-decoration: underline;
+}
+
+
+/* ORDER PAGE */
+
+.order-page {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+  padding: 40px 20px;
+
+  box-sizing: border-box;
+}
+
+
+/* Product */
+
+.order-product {
+  width: 100%;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 60px;
+  margin: 0 auto 50px;
+}
+
+.order-product-info {
+  width: 500px;
+  color: #000;
+}
+
+.breadcrumb {
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.breadcrumb span {
+  color: #ce2829;
+}
+
+.order-product-info h1 {
+  color: #000;
+  font-size: 32px;
+  margin-bottom: 20px;
+}
+
+.product-price-rating {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  margin-bottom: 20px;
+}
+
+.product-price-rating strong {
+  color: #000;
+  font-size: 28px;
+}
+
+.product-price-rating div {
+  display: flex;
+  gap: 20px;
+}
+
+.product-price-rating span {
+  color: #000;
+}
+
+.product-description {
+  color: #000;
+  line-height: 1.6;
+}
+
+
+/* Options */
+
+.order-options {
+  width: 100%;
+  max-width: 500px;
+
+  margin: 0 auto;
+}
+
+
+/* Size + Dough */
+
+.option-row {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 120px;
+  margin-bottom: 50px;
+}
+
+.option-row h3 {
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.size-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.size-options label {
+  color: #000;
+  cursor: pointer;
+}
+
+.size-options input {
+  margin-right: 6px;
+}
+
+.option-row select {
+  min-width: 180px;
+  padding: 10px;
+
+  color: #000;
+  background-color: #fff;
+
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+
+/* Ingredients */
+
+.ingredients-section {
+  width: 100%;
+  margin: 0 0 50px;
+}
+
+.ingredients-section h3 {
+  color: #000;
+  margin-bottom: 8px;
+}
+
+.ingredients-section p {
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.ingredients-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 15px;
+  box-sizing: border-box;
+}
+
+.ingredients-grid label {
+  color: #000;
+  cursor: pointer;
+  white-space: nowrap
+}
+
+.ingredients-grid input {
+  margin-right: 7px;
+}
+
+/* Name*/
+
+.name-section {
+  margin-bottom: 30px;
+}
+
+.name-section h3 {
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.name-section input {
+  display: block;
+  width: 100%;
+  padding: 15px;
+  box-sizing: border-box;
+
+  color: #000;
+  background-color: #fff;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+}
+
+.name-section input::placeholder {
+  color: #777;
+}
+
+/* Notes */
+
+.note-section {
+  margin-bottom: 50px;
+  color: #000;
+}
+
+.note-section h3 {
+  color: #000;
+  margin-bottom: 15px;
+}
+
+.note-section textarea {
+  display: block;
+
+  width: 100%;
+  min-height: 120px;
+
+  padding: 15px;
+
+  color: #000;
+  background-color: #fff;
+
+  border: 1px solid #ccc;
+  border-radius: 6px;
+
+  resize: vertical;
+}
+
+.note-section textarea::placeholder {
+  color: #777;
+}
+
+
+/* Bottom */
+
+.order-bottom {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+
+  gap: 100px;
+
+  margin-top: 40px;
+}
+
+
+/* Quantity */
+
+.quantity {
+  display: flex;
+  align-items: center;
+
+  height: 45px;
+}
+
+.quantity button {
+  width: 45px;
+  height: 45px;
+
+  border: 1px solid #ccc;
+  background-color: #FDC913;
+
+  color: #000;
+
+  font-size: 22px;
+  cursor: pointer;
+}
+
+.quantity span {
+  width: 50px;
+  height: 45px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  color: #000;
+  background-color: #fff;
+
+  border-top: 1px solid #ccc;
+  border-bottom: 1px solid #ccc;
+}
+
+
+/* Summary */
+
+.order-summary {
+  width: 300px;
+
+  padding: 25px;
+
+  border: 1px solid #ddd;
+  border-radius: 8px;
+
+  color: #000;
+  background-color: #fff;
+}
+
+.order-summary h3 {
+  color: #000;
+  margin-bottom: 20px;
+}
+
+.order-summary > div {
+  display: flex;
+  justify-content: space-between;
+
+  margin-bottom: 12px;
+}
+
+.order-summary span,
+.order-summary strong {
+  color: #000;
+}
+
+.order-submit {
+  width: 100%;
+
+  margin-top: 15px;
+  padding: 15px;
+
+  border: none;
+  border-radius: 5px;
+
+  background-color: #FDC913;
+  color: #000;
+
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.order-submit:hover {
+  background-color: #a91f20;
+}
+
+.order-submit:disabled {
+  background-color: #ccc;
+  color: #292929;
+  cursor: not-allowed;
+  border-color: transparent;
+}
+
+.order-submit:disabled:hover {
+  background-color: #ccc;
+  color: #5F5F5F;
+  border-color: transparent;
+}
+
+/* Mobile port */
+
 @media (max-width: 600px) {
 
   body {
@@ -553,10 +975,11 @@ footer {
   }
 
   .menu-tanitim {
-    flex-direction: column;
+    display: flex;
+    flex-direction: row;
     gap: 10px;
-    margin-top: 50px;
-    padding: 10px;
+    margin-top: 100px;
+    background: #FAF7F2;
   }
 
   .menu-sol,

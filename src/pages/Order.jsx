@@ -1,44 +1,70 @@
 import { useState } from "react";
+import Footer from "../components/Footer";
+import { useNavigate } from "react-router-dom";
+import axios from "axios";
 
-function Order({ setPage, selectedPizza }) {
+function Order({ selectedPizza }) {
+  const navigate = useNavigate();
   const [size, setSize] = useState("Orta");
   const [dough, setDough] = useState("Normal");
   const [ingredients, setIngredients] = useState([]);
   const [note, setNote] = useState("");
   const [quantity, setQuantity] = useState(1);
+  const [name, setName] = useState("");
 
   const ingredientList = [
     "Pepperoni",
     "Sosis",
-    "Jambon",
-    "Mantar",
-    "Ananas",
-    "Tavuk",
+    "Kanada Jambonu",
+    "Tavuk Izgara",
     "Soğan",
+    "Domates",
     "Sarımsak",
     "Biber",
     "Zeytin",
     "Mısır",
     "Sucuk",
-    "Domates",
+    "Jalapeno",
     "Brokoli",
+    "Ananas",
+    "Kabak"
   ];
 
   const ingredientPrice = 5;
 
   const handleIngredientChange = (ingredient) => {
-    if (ingredients.includes(ingredient)) {
-      setIngredients(
-        ingredients.filter((item) => item !== ingredient)
-      );
-    } else {
-      setIngredients([...ingredients, ingredient]);
+  if (ingredients.includes(ingredient)) {
+    setIngredients(
+      ingredients.filter((item) => item !== ingredient)
+    );
+  } else {
+    if (ingredients.length >= 10) {
+      return;
     }
-  };
+
+    setIngredients([...ingredients, ingredient]);
+  }
+};
 
   const extraPrice = ingredients.length * ingredientPrice;
-  const totalPrice =
-    (selectedPizza?.price || 0) * quantity + extraPrice;
+  const totalPrice = (selectedPizza?.price || 0) * quantity + extraPrice;
+
+  const handleSubmit = () => {
+  const orderData = {
+    isim: name,
+    boyut: size,
+    malzemeler: ingredients,
+    siparisNotu: note,
+    miktar: quantity,
+    hamur: dough,
+  };
+
+  axios.post("https://reqres.in/api/collections/pizza/records?project_id=53713", { data: orderData })
+    .then((response) => {
+      console.log(response.data);
+      navigate("/success");
+    });
+};
 
   return (
     <>
@@ -49,25 +75,28 @@ function Order({ setPage, selectedPizza }) {
             className="order-logo-img"
             src="/assets/iteration-1/logo.svg"
             alt="Teknolojik Yemekler Logo"
-            onClick={() => setPage("home")}
+            onClick={() => navigate("/")}
           />
+           <div className="order-breadcrumb">
+              <span
+                className="breadcrumb-home"
+                onClick={() => navigate("/")}
+              >
+                Anasayfa
+              </span>
+
+              {" / Siparişler / "}
+              <span>Sipariş Ver</span>
+            </div>
+          
         </div>
       </header>
 
       {/* ÜRÜN BİLGİSİ */}
       <main className="order-page">
         <div className="order-product">
-          <img
-            className="order-pizza-image"
-            src="/assets/iteration-2/pictures/food-2.png"
-            alt={selectedPizza?.name}
-          />
 
           <div className="order-product-info">
-            <div className="breadcrumb">
-              Anasayfa / Siparişler /{" "}
-              <span>Sipariş Ver</span>
-            </div>
 
             <h1>{selectedPizza?.name}</h1>
 
@@ -76,7 +105,6 @@ function Order({ setPage, selectedPizza }) {
 
               <div>
                 <span>4.9</span>
-                <span>60</span>
               </div>
             </div>
 
@@ -150,7 +178,7 @@ function Order({ setPage, selectedPizza }) {
           <section className="ingredients-section">
             <h3>Ek Malzemeler</h3>
 
-            <p>En fazla 10 malzeme seçebilirsin.</p>
+            <p>En az 4, En fazla 10 malzeme seçebilirsin. 5₺</p>
 
             <div className="ingredients-grid">
               {ingredientList.map((ingredient) => (
@@ -167,6 +195,18 @@ function Order({ setPage, selectedPizza }) {
                 </label>
               ))}
             </div>
+          </section>
+
+          {/* İSİM */}
+          <section className="name-section">
+            <h3>İsminiz</h3>
+
+            <input
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="Adınızı giriniz"
+            />
           </section>
 
           {/* NOT */}
@@ -222,6 +262,11 @@ function Order({ setPage, selectedPizza }) {
               <button
                 className="order-submit"
                 type="button"
+                disabled={
+                  name.trim().length < 3 ||
+                  ingredients.length < 4
+                }
+                onClick={handleSubmit}
               >
                 SİPARİŞ VER
               </button>
@@ -229,6 +274,7 @@ function Order({ setPage, selectedPizza }) {
           </div>
         </div>
       </main>
+      <Footer/>
     </>
   );
 }
