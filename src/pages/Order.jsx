@@ -51,12 +51,6 @@ function Order({ setPage, selectedPizza }) {
             alt="Teknolojik Yemekler Logo"
             onClick={() => setPage("home")}
           />
-          <button
-            className="order-logo"
-            onClick={() => setPage("home")}
-          >
-            Teknolojik Yemekler
-          </button>
         </div>
       </header>
 
