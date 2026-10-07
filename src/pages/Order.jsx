@@ -59,7 +59,19 @@ function Order({ selectedPizza }) {
     hamur: dough,
   };
 
-  axios.post("https://reqres.in/api/collections/pizza/records?project_id=53713", { data: orderData })
+  axios.post(
+  "https://reqres.in/api/collections/pizza/records?project_id=53713",
+  {
+    data: orderData,
+  },
+  {
+    headers: {
+      "Content-Type": "application/json",
+      "x-api-key": import.meta.env.VITE_REQRES_API_KEY,
+      "X-Reqres-Env": "prod",
+    },
+  }
+)
     .then((response) => {
       console.log(response.data);
       navigate("/success");
