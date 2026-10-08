@@ -201,6 +201,7 @@ function Order({ selectedPizza }) {
               {ingredientList.map((ingredient) => (
                 <label key={ingredient}>
                   <input
+                    data-cy={`ingredient-${ingredient}`}
                     type="checkbox"
                     checked={ingredients.includes(ingredient)}
                     onChange={() =>
@@ -219,6 +220,7 @@ function Order({ selectedPizza }) {
             <h3>İsminiz</h3>
 
             <input
+              data-cy="name-input"
               type="text"
               value={name}
               onChange={(e) => setName(e.target.value)}
@@ -277,6 +279,7 @@ function Order({ selectedPizza }) {
               </div>
 
               <button
+                data-cy="submit-order"
                 className="order-submit"
                 type="button"
                 disabled={
