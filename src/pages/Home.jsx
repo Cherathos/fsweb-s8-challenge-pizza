@@ -27,7 +27,7 @@ function Home({ setSelectedPizza }) {
           onClick={() => {
             navigate("/order");
             setSelectedPizza({ 
-              name: "Position: Absolute Acı Burger",
+              name: "Position: Absolute Acı Pizza",
               price: 60,
             });
           }}>

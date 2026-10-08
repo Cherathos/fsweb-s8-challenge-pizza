@@ -19,13 +19,12 @@ function Order({ selectedPizza }) {
     "Tavuk Izgara",
     "Soğan",
     "Domates",
-    "Sarımsak",
-    "Biber",
-    "Zeytin",
     "Mısır",
     "Sucuk",
     "Jalapeno",
-    "Brokoli",
+    "Sarımsak",
+    "Biber",
+    "Zeytin",
     "Ananas",
     "Kabak"
   ];
@@ -47,7 +46,7 @@ function Order({ selectedPizza }) {
 };
 
   const extraPrice = ingredients.length * ingredientPrice;
-  const totalPrice = (selectedPizza?.price || 0) * quantity + extraPrice;
+  const totalPrice = ((selectedPizza?.price || 0) + extraPrice) * quantity;
 
   const handleSubmit = () => {
   const orderData = {
@@ -97,8 +96,8 @@ function Order({ selectedPizza }) {
                 Anasayfa
               </span>
 
-              {" / Siparişler / "}
-              <span>Sipariş Ver</span>
+              {" - "}
+              <strong>Sipariş Oluştur</strong>
             </div>
           
         </div>
@@ -121,9 +120,15 @@ function Order({ selectedPizza }) {
             </div>
 
             <p className="product-description">
-              Teknolojik Yemekler'in birbirinden lezzetli
-              pizzalarından birini seçtin. Şimdi pizzanı
-              istediğin gibi özelleştir ve siparişini oluştur.
+              Frontent Dev olarak hala position:absolute
+              kullanıyorsan bu çok acı pizza tam sana göre.
+              Pizza, domates, peynir ve genellikle çeşitli diğer
+              malzemelerle kalpanmış, daha sonra geleneksel
+              olarak odun ateşinde bir fırında yüksek
+              sıcaklıkta pişirilen, genellikle yuvarlak,
+              düzleştirilmiş mayalı buğday bazlı hamurdan
+              oluşan İtalyan kökenli lezzetli bir yemektir.
+              Küçük bir pizzaya bazen pizzetta denir.
             </p>
           </div>
         </div>
@@ -172,15 +177,15 @@ function Order({ selectedPizza }) {
             </div>
 
             {/* HAMUR */}
-            <div>
+            <div className="dough-options">
               <h3>Hamur Seç</h3>
 
               <select
                 value={dough}
                 onChange={(e) => setDough(e.target.value)}
               >
-                <option value="Normal">Normal Hamur</option>
-                <option value="İnce">İnce Hamur</option>
+                <option value="Normal">İnce Hamur</option>
+                <option value="İnce">Normal Hamur</option>
                 <option value="Kalın">Kalın Hamur</option>
               </select>
             </div>
@@ -266,7 +271,7 @@ function Order({ selectedPizza }) {
                 <strong>{extraPrice}₺</strong>
               </div>
 
-              <div>
+              <div className="order-total">
                 <span>Toplam</span>
                 <strong>{totalPrice}₺</strong>
               </div>
