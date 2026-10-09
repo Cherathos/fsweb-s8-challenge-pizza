@@ -275,7 +275,7 @@ function Home({ setSelectedPizza }) {
                   navigate("/order");
                   setSelectedPizza({ 
               name: "Hackathon Burger",
-              price: 60,
+              price: 50,
             });
           }}
               />

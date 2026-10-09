@@ -27,6 +27,7 @@ function Order({ selectedPizza }) {
     "Zeytin",
     "Ananas",
     "Kabak",
+    
   ];
 
   const ingredientPrice = 5;
