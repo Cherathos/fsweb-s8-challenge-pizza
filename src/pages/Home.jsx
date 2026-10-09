@@ -226,7 +226,7 @@ function Home({ setSelectedPizza }) {
                 src="/assets/iteration-2/pictures/food-1.png"
                 alt="Terminal Pizza"
                 onClick={() => {
-                    history.push("/order");
+                    navigate("/order");
                     setSelectedPizza({ 
                       name: "Terminal Pizza",
                       price: 60,
@@ -249,7 +249,7 @@ function Home({ setSelectedPizza }) {
                 src="/assets/iteration-2/pictures/food-2.png"
                 alt="Position Absolute Acı Pizza"
                  onClick={() => {
-                    history.push("/order");
+                    navigate("/order");
                     setSelectedPizza({ 
                       name: "Position: Absolute Acı Pizza",
                       price: 70,
@@ -272,8 +272,8 @@ function Home({ setSelectedPizza }) {
                 src="/assets/iteration-2/pictures/food-3.png"
                 alt="Hackathon Burger"
                  onClick={() => {
-            history.push("/order");
-            setSelectedPizza({ 
+                  navigate("/order");
+                  setSelectedPizza({ 
               name: "Hackathon Burger",
               price: 60,
             });

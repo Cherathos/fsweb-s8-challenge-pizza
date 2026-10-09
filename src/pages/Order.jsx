@@ -26,7 +26,7 @@ function Order({ selectedPizza }) {
     "Biber",
     "Zeytin",
     "Ananas",
-    "Kabak"
+    "Kabak",
   ];
 
   const ingredientPrice = 5;
@@ -198,7 +198,7 @@ function Order({ selectedPizza }) {
 
           {/* MALZEMELER */}
           <section className="ingredients-section">
-            <h3>Ek Malzemeler <span className="required">*</span></h3>
+            <h3>Ek Malzemeler <span className="required-star">*</span></h3>
 
             <p>En az 4, En fazla 10 malzeme seçebilirsin. 5₺</p>
 
@@ -222,7 +222,7 @@ function Order({ selectedPizza }) {
 
           {/* İSİM */}
           <section className="name-section">
-            <h3>İsminiz <span className="required">*</span></h3>
+            <h3>İsminiz <span className="required-star">*</span></h3>
 
             <input
               data-cy="name-input"
