@@ -1,9 +1,11 @@
 import { useNavigate } from "react-router-dom";
+import Footer from "../components/Footer";
 
 function Success() {
   const navigate = useNavigate();
 
   return (
+    <>
     <div className="success-page">
       <div className="success-header">
         <img
@@ -18,6 +20,9 @@ function Success() {
         <h1>Siparişiniz Alındı!</h1>
       </div>
     </div>
+    <Footer/>
+    </>
+
   );
 }
 

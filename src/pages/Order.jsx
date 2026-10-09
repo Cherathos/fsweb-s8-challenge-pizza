@@ -74,7 +74,12 @@ function Order({ selectedPizza }) {
     .then((response) => {
       console.log(response.data);
       navigate("/success");
-    });
+    })
+    .catch((error) => {
+    console.error("Sipariş gönderilemedi:", error);
+
+    alert("Siparişiniz gönderilirken bir hata oluştu. Lütfen tekrar deneyin.");
+  });;
 };
 
   return (
@@ -193,7 +198,7 @@ function Order({ selectedPizza }) {
 
           {/* MALZEMELER */}
           <section className="ingredients-section">
-            <h3>Ek Malzemeler</h3>
+            <h3>Ek Malzemeler <span className="required">*</span></h3>
 
             <p>En az 4, En fazla 10 malzeme seçebilirsin. 5₺</p>
 
@@ -217,7 +222,7 @@ function Order({ selectedPizza }) {
 
           {/* İSİM */}
           <section className="name-section">
-            <h3>İsminiz</h3>
+            <h3>İsminiz <span className="required">*</span></h3>
 
             <input
               data-cy="name-input"
